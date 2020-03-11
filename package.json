@@ -4,18 +4,20 @@
   "description": "Reviews service for the Amazon Prime Video app",
   "main": "index.js",
   "scripts": {
+    "build:dev": "webpack -d --watch",
+    "start": "node server/server.js",
+    "start:dev": "nodemon server/server.js -w server -w database/dbConfig.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/obnoxious-hippopotamus/review-service.git"
   },
-  "author": "",
+  "author": "Brandon Ellis",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/obnoxious-hippopotamus/review-service/issues"
   },
-  "homepage": "https://github.com/obnoxious-hippopotamus/review-service#readme",
   "dependencies": {
     "@babel/core": "^7.8.7",
     "@babel/preset-env": "^7.8.7",
@@ -36,5 +38,6 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-  }
+  },
+  "homepage": "#"
 }
