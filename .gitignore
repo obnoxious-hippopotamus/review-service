@@ -1,0 +1,19 @@
+
+# node mods
+
+/node_modules
+
+# environmental / config vars
+
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+.env
+env
+config
+.config
+dbConfig.js
+/database/dbConfig.js
