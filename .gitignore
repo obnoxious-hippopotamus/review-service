@@ -1,6 +1,5 @@
 
 # node mods
-
 /node_modules
 
 # environmental / config vars
@@ -13,7 +12,3 @@
 
 .env
 env
-config
-.config
-dbConfig.js
-/database/dbConfig.js
