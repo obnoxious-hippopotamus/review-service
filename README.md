@@ -1,14 +1,16 @@
-#Amazon Prime Video Landing Page | Reviews
+# Amazon Prime Video Landing Page | Reviews
 
 A fullstack service to display reviews for each movie.
 
-##Related Projects
--
--
--
+## Related Projects
+- https://github.com/obnoxious-hippopotamus/similar-service
+- https://github.com/obnoxious-hippopotamus/header-service
 
-##Usage
+## Usage
+TBD
 
-##Requirements
+## Requirements
+TBD
 
-##Development
+## Development
+TBD
