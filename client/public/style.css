@@ -27,7 +27,6 @@ h2, h3 {
 }
 
 .sidebar {
-    border: 2px solid black;
     padding: 0px 40px;
 }
 
@@ -70,14 +69,23 @@ h2, h3 {
     padding: 20px 0px;
 }
 
-.customerReviewSection {
-
-}
-
 .writeReviewBtn {
     width: 100%;
     padding: 7px 0px;
     border-radius: 3px;
     font-size: 13px;
     margin-bottom: 20px;
+}
+
+.tags {
+    display: flex;
+}
+
+.tag {
+    background-color: rgb(206,226,229);
+    padding: 5px;
+    border-bottom: 1px solid black;
+    width: 15%;
+    margin-right: 7px;
+    text-align: center;
 }

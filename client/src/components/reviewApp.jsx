@@ -26,7 +26,7 @@ export default class ReviewApp extends React.Component {
                 return res.data
             })
             .then(reviews => {
-                this.setState({ reviews }, () => console.log(this.state.reviews))
+                this.setState({ reviews })
             })
             .catch(err => {
                 console.log(err);
