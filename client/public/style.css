@@ -60,3 +60,8 @@ p {
     font-size: 14px;
     border-radius: 2px;
 }
+
+.placeholder {
+    width: 100%;
+    padding: 20px 0px;
+}
