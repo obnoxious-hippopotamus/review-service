@@ -1,52 +1,10 @@
 const Axios = require('axios');
 require('dotenv').config();
-const db = require('./database/index.js');
+const db = require('./database/models.js');
 var faker = require('faker');
-const mysql = require('mysql');
-
 
 //save all movie ids from initial api call
 let movieIds = [];
-
-//added connection due to issues with import
-const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: process.env.DB_PASS,
-    database: 'amazon_reviews'
-});
-
-//used to remove all data from table before getting new data
-const truncate = () => {
-    let query = 'TRUNCATE TABLE reviews';
-
-    connection.query(query, (err, results, fields) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('Table Truncated');
-        }
-    });
-};
-
-const getSeedData = (movie_id, author, content, img_url, rating) => {
-    
-    // ==== INSERT EACH REVIEW INTO DB
-    return new Promise((resolve, reject) => {
-
-        let query = `INSERT INTO reviews (movie_id, author, content, image_url, rating)
-            VALUES(${movie_id}, "${author}", "${content}", "${img_url}", ${rating})`;
-    
-        connection.query(query, (err, results, fields) => {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(results);
-            }
-        });
-    });
-};
-
 
 const getMoviesAndReviews = async () => {
 
@@ -90,7 +48,7 @@ const getMoviesAndReviews = async () => {
                     var precision = 100; // 2 decimals
                     var num = (Math.floor(Math.random() * (5 * precision - 1 * precision) + 1 * precision) / (1 * precision));
 
-                    getSeedData(movie, item.author, item.content.replace(/[\u0800-\uFFFF]/g, ''), avatar, num)
+                    db.getSeedData(movie, item.author, item.content.replace(/[\u0800-\uFFFF]/g, ''), avatar, num)
                         .then(() => console.log('Movie Added'))
                         .catch(err => console.log(err));
                 })
@@ -102,7 +60,10 @@ const getMoviesAndReviews = async () => {
 }
 
 //remove existing data from table
-truncate();
-
-//run func
-getMoviesAndReviews();
+db.truncate()
+    .then(() => {
+        getMoviesAndReviews();
+    })
+    .catch(err => {
+        console.log(err);
+    });
