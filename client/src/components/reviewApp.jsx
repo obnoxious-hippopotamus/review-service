@@ -42,7 +42,7 @@ export default class ReviewApp extends React.Component {
                 <Grid className="main" item xs={8}>
                     <Tags />
                     <Sort />
-                    <ReviewList />
+                    <ReviewList reviews={this.state.reviews} />
                 </Grid>
             </Grid>
         )
