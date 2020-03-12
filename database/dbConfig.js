@@ -4,7 +4,7 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Skiclub0',
+  password: process.env.DB_PASS,
   database: 'amazon_reviews'
 });
 
