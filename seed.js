@@ -14,7 +14,20 @@ const connection = mysql.createConnection({
     user: 'root',
     password: process.env.DB_PASS,
     database: 'amazon_reviews'
-  });
+});
+
+//used to remove all data from table before getting new data
+const truncate = () => {
+    let query = 'TRUNCATE TABLE reviews';
+
+    connection.query(query, (err, results, fields) => {
+        if (err) {
+            console.log(err);
+        } else {
+            console.log('Table Truncated');
+        }
+    });
+};
 
 const getSeedData = (movie_id, author, content, img_url, rating) => {
     
@@ -87,6 +100,9 @@ const getMoviesAndReviews = async () => {
             });
     });
 }
+
+//remove existing data from table
+truncate();
 
 //run func
 getMoviesAndReviews();
