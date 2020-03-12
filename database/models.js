@@ -52,9 +52,24 @@ module.exports.getAllTableData = () => {
 
 //get specific movie id
 module.exports.getDataById = (id) => {
-    console.log('made it to get data by id', id);
     let query = `SELECT * FROM reviews WHERE movie_id = ${id}`;
 
+    return new Promise((resolve, reject) => {
+        dbConnection.query(query, (err, results, fields) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(results);
+            }
+        });
+    });
+};
+
+module.exports.getSortedReviews = (id) => {
+    const query = `SELECT * FROM reviews 
+                    WHERE movie_id = ${id} 
+                    ORDER BY rating DESC`;
+    
     return new Promise((resolve, reject) => {
         dbConnection.query(query, (err, results, fields) => {
             if (err) {

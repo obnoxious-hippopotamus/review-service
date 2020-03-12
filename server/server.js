@@ -19,6 +19,18 @@ app.use(express.json());
 
 // === routes
 
+//serve up sorted reviews
+app.get('/api/reviews/sort/:movie_id', (req, res) => {
+    db.getSortedReviews(req.params.movie_id)
+        .then(response => {
+            console.log(response)
+            res.status(200).json(response);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+});
+
 //all reviews
 app.get('/api/reviews', (req, res) => {
     db.getAllTableData()
@@ -32,7 +44,6 @@ app.get('/api/reviews', (req, res) => {
 
 //get specific movie
 app.get('/api/reviews/:movie_id', (req, res) => {
-    console.log(req.params.movie_id)
     db.getDataById(req.params.movie_id)
         .then(response => {
             res.status(200).json(response);
