@@ -15,3 +15,6 @@ env
 
 #bundle
 /client/public/bundle.js
+# Compiled Dirs (http://nodejs.org/api/addons.html)
+build/
+dist/
