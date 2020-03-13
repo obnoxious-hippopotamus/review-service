@@ -1,8 +1,10 @@
-// const Axios = require('axios');
+const Axios = require('axios');
+const request = require('request');
 const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
 const db = require('../database/models.js');
+const movieApi = require('./helpers/apiHelpers.js');
 
 const express = require('express');
 const app = express();
@@ -47,6 +49,17 @@ app.get('/api/reviews/:movie_id', (req, res) => {
     db.getDataById(req.params.movie_id)
         .then(response => {
             res.status(200).json(response);
+        })
+        .catch(err => {
+            res.status(400).json(err);
+        });
+});
+
+//get official movie rating; not included in db
+app.get('/api/movies/:movie_id', (req, res) => { 
+    movieApi.get(req.params.movie_id)
+        .then(response => {
+            res.status(200).send(response.body);
         })
         .catch(err => {
             res.status(400).json(err);
