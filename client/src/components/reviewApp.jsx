@@ -15,18 +15,39 @@ export default class ReviewApp extends React.Component {
         this.state = {
             movie_id: 284053,
             reviews: [],
+            popularity: 0
         };
 
         this.sortReviews = this.sortReviews.bind(this);
     };
 
     componentDidMount() {
+        //get data from db
         Axios.get(`/api/reviews/${this.state.movie_id}`)
             .then(res => {
                 return res.data
             })
             .then(reviews => {
                 this.setState({ reviews })
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        //get official movie rating
+        fetch(`/api/movies/${this.state.movie_id}`, {
+            method: 'GET',
+            headers: {
+                "content-type": "application/json"
+            }
+        })
+            .then(res => {
+                return res.json();
+            })
+            .then(movie => {
+                this.setState({
+                    popularity: movie.vote_average / 2
+                })
             })
             .catch(err => {
                 console.log(err);
@@ -44,7 +65,6 @@ export default class ReviewApp extends React.Component {
                 return res.data;
             })
             .then(reviews => {
-                console.log(reviews);
                 this.setState({
                     reviews: reviews
                 })
@@ -60,7 +80,10 @@ export default class ReviewApp extends React.Component {
         return(
             <Grid container >
                 <Grid className="sidebar" item xs={4}>
-                    <Sidebar />
+                    <Sidebar 
+                        reviews={this.state.reviews}
+                        popularity={this.state.popularity}
+                    />
                 </Grid>
                 <Grid className="main" item xs={8}>
                     <Tags />
