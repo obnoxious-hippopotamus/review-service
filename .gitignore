@@ -12,3 +12,6 @@
 
 .env
 env
+
+#bundle
+/client/public/bundle.js
