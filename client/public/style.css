@@ -19,7 +19,12 @@ h2, h3 {
 }
 
 .blue {
-    color: rgb(9,79,179)
+    color: rgb(9,79,179);
+}
+
+.percentage {
+    margin: 0px;
+    margin-top: 2px;
 }
 
 .rm-margin {
