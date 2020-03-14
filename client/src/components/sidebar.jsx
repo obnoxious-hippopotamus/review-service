@@ -10,8 +10,12 @@ const Sidebar = props => {
     return (
         <div>
             <h2>Customer Reviews</h2>
-            <Rating name="read-only" size="large" value={props.popularity} precision={0.1} readOnly  />
-            <RatingChart />
+            <div className="flex">
+                <Rating name="read-only" size="large" value={props.popularity} precision={0.1} readOnly  />
+                <h4 className="padding-left">{props.popularity} out of 5</h4>
+            </div>
+            <p className="small-grey">{props.reviews.length} customer ratings</p>
+            <RatingChart reviews={props.reviews} />
             <Divider />
             <CustomerReview />
         </div>

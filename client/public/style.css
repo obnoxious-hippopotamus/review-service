@@ -18,6 +18,10 @@ h2, h3 {
     align-items: center;
 }
 
+.blue {
+    color: rgb(9,79,179)
+}
+
 .rm-margin {
     margin: 0px !important;
 }
@@ -88,4 +92,5 @@ h2, h3 {
     width: 15%;
     margin-right: 7px;
     text-align: center;
+    flex-wrap: wrap;
 }
