@@ -99,3 +99,8 @@ h2, h3 {
     text-align: center;
     flex-wrap: wrap;
 }
+
+.thank-you {
+    color: rgb(32,112,25);
+    font-size: 12px;
+}
