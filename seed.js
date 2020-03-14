@@ -45,8 +45,8 @@ const getMoviesAndReviews = async () => {
                     let avatar = faker.image.avatar();
                     
                     //generate random num between 1-5
-                    var precision = 100; // 2 decimals
-                    var num = (Math.floor(Math.random() * (5 * precision - 1 * precision) + 1 * precision) / (1 * precision));
+                    var num = Math.ceil(Math.random() * 5);
+                    console.log(num);
 
                     db.getSeedData(movie, item.author, item.content.replace(/[\u0800-\uFFFF]/g, ''), avatar, num)
                         .then(() => console.log('Movie Added'))
