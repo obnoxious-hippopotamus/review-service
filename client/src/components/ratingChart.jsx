@@ -47,19 +47,19 @@ const RatingChart = props => {
                     beginAtZero: true,
                     max: props.reviews.length
                 },
-                }],
+            }],
             yAxes: [{
-                    display: true,
-                    gridLines: {
-                        color: "rgba(0, 0, 0, 0)",
-                    },
-                    ticks: {
-                        beginAtZero: true,
-                        steps: 1,
-                        stepValue: 1,
-                        max: 1
-                    }
-                }]
+                display: true,
+                gridLines: {
+                    color: "rgba(0, 0, 0, 0)",
+                },
+                ticks: {
+                    beginAtZero: true,
+                    steps: 1,
+                    stepValue: 1,
+                    max: 1
+                },
+            }]
         },
         title: {
             display: false,
