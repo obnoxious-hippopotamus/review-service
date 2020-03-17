@@ -67,7 +67,7 @@ app.get('/api/movies/:movie_id', (req, res) => {
 });
 
 //port and listen
-let PORT = process.env.PORT || 3003;
+let PORT = process.env.PORT || 3002;
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
