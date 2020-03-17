@@ -9,7 +9,7 @@ Enzyme.configure({adapter: new Adapter()});
 
 const app = shallow(<Tags />);
 
-describe('Sort Component', () => {
+describe('Tags Component', () => {
     it('renders', () => {
         expect(app.exists()).toBeTruthy();
     });
