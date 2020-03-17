@@ -12,7 +12,7 @@ const getMoviesAndReviews = async () => {
     let page = 1;
 
     //while loop to get 5 pages of data
-    while (page <= 5) {
+    while (page <= 50) {
         
         //async/await function to GET
         const response = await Axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=${page}`)
@@ -46,7 +46,6 @@ const getMoviesAndReviews = async () => {
                     
                     //generate random num between 1-5
                     var num = Math.ceil(Math.random() * 5);
-                    console.log(num);
 
                     db.getSeedData(movie, item.author, item.content.replace(/[\u0800-\uFFFF]/g, ''), avatar, num)
                         .then(() => console.log('Movie Added'))
@@ -64,6 +63,7 @@ db.truncate()
     .then(() => {
         getMoviesAndReviews();
     })
+    .then(() => console.log('Finished'))
     .catch(err => {
         console.log(err);
     });
