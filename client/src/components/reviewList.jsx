@@ -6,6 +6,7 @@ const ReviewList = props => {
 
     let placeholders = [0,1,2,3,4]
 
+    console.log(props.reviews)
     if (props.reviews.length === 0) {
         return (
             
