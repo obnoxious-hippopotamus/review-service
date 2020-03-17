@@ -16,12 +16,13 @@ let sampleReviews = [
 
 const reviewList = shallow(<ReviewList reviews={sampleReviews}  />);
 
-
+reviewList.find('button')
 
 describe('Review List Component', () => {
 
   it('works', () => {
     expect(reviewList).toMatchSnapshot();
+    expect(reviewList.exists()).toBeTruthy();
   })
 
   it('Review List should recieve reviews prop', () => {
