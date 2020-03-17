@@ -1,6 +1,3 @@
-
-// Copyright 2004-present Facebook. All Rights Reserved.
-
 import React from 'react';
 import Enzyme, { shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
@@ -15,8 +12,7 @@ let sampleReviews = [
 ];
 
 const reviewList = shallow(<ReviewList reviews={sampleReviews}  />);
-
-reviewList.find('button')
+const emptyReviewList = shallow(<ReviewList reviews={[]} />);
 
 describe('Review List Component', () => {
 
@@ -25,13 +21,26 @@ describe('Review List Component', () => {
     expect(reviewList.exists()).toBeTruthy();
   })
 
-  it('Review List should recieve reviews prop', () => {
-    
-    // reviewList.reviews.forEach(review => {
-    //   console.log(review)
+  it('contains placeholders if no review prop is rendered', () => {
+    expect(emptyReviewList.hasClass('reviewItemView')).toBeFalsy();
+    expect(emptyReviewList.hasClass('placeholderView')).toBeTruthy();
+    expect(emptyReviewList.childAt(0).hasClass('placeholder')).toBeTruthy();
+  });
 
-    // })
-    // expect(reviewList.reviews[0].id).toBe(834)
+  it('Review List should recieve reviews prop', () => {
+    //tbd
     
+  });
+
+  it('should render ReviewItem components', () => {
+    expect(reviewList.find('ReviewItem').length).toBeGreaterThan(0);
+  });
+
+  it('renders review items when the reviews change', () => {
+    emptyReviewList.setProps({
+      reviews: sampleReviews
+    });
+
+    expect(emptyReviewList.find('ReviewItem').length).toBeGreaterThan(0);
   });
 });

@@ -6,11 +6,10 @@ const ReviewList = props => {
 
     let placeholders = [0,1,2,3,4]
 
-    console.log(props.reviews)
     if (props.reviews.length === 0) {
         return (
             
-            <div>
+            <div className="placeholderView">
                 {placeholders.map(item => {
                     return (
                         <div className="placeholder" key={placeholders.indexOf(item)}>
@@ -23,7 +22,7 @@ const ReviewList = props => {
         )
     } else {
         return (
-            <div>
+            <div className="reviewItemView">
                 {props.reviews.map(review => {
                     return (
                         <ReviewItem key={review.id} review={review} />
