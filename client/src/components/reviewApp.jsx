@@ -1,6 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
 import { Grid } from '@material-ui/core/';
+import dbGet from '../api/dbGet.js';
+import moviesGet from '../api/moviesGet';
 
 //components
 import Sidebar from './sidebar.jsx';
@@ -23,27 +25,16 @@ export default class ReviewApp extends React.Component {
 
     componentDidMount() {
         //get data from db
-        Axios.get(`/api/reviews/${this.state.movie_id}`)
-            .then(res => {
-                return res.data
-            })
+        dbGet(this.state.movie_id)
             .then(reviews => {
                 this.setState({ reviews })
             })
             .catch(err => {
                 console.log(err);
             });
-
-        //get official movie rating
-        fetch(`/api/movies/${this.state.movie_id}`, {
-            method: 'GET',
-            headers: {
-                "content-type": "application/json"
-            }
-        })
-            .then(res => {
-                return res.json();
-            })
+        
+            //get official movie rating
+        moviesGet(this.state.movie_id)
             .then(movie => {
                 this.setState({
                     popularity: movie.vote_average / 2
@@ -52,6 +43,24 @@ export default class ReviewApp extends React.Component {
             .catch(err => {
                 console.log(err);
             });
+
+        // fetch(`/api/movies/${this.state.movie_id}`, {
+        //     method: 'GET',
+        //     headers: {
+        //         "content-type": "application/json"
+        //     }
+        // })
+        //     .then(res => {
+        //         return res.json();
+        //     })
+        //     .then(movie => {
+        //         this.setState({
+        //             popularity: movie.vote_average / 2
+        //         })
+        //     })
+        //     .catch(err => {
+        //         console.log(err);
+        //     });
     };
 
     sortReviews() {
