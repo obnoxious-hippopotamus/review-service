@@ -2,7 +2,7 @@ import React from 'react';
 import Axios from 'axios';
 import { Grid } from '@material-ui/core/';
 import dbGet from '../api/dbGet.js';
-import moviesGet from '../api/moviesGet';
+import moviesGet from '../api/moviesGet.js';
 
 //components
 import Sidebar from './sidebar.jsx';
@@ -33,7 +33,7 @@ export default class ReviewApp extends React.Component {
                 console.log(err);
             });
         
-            //get official movie rating
+        //get official movie rating
         moviesGet(this.state.movie_id)
             .then(movie => {
                 this.setState({
@@ -43,24 +43,6 @@ export default class ReviewApp extends React.Component {
             .catch(err => {
                 console.log(err);
             });
-
-        // fetch(`/api/movies/${this.state.movie_id}`, {
-        //     method: 'GET',
-        //     headers: {
-        //         "content-type": "application/json"
-        //     }
-        // })
-        //     .then(res => {
-        //         return res.json();
-        //     })
-        //     .then(movie => {
-        //         this.setState({
-        //             popularity: movie.vote_average / 2
-        //         })
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //     });
     };
 
     sortReviews() {
