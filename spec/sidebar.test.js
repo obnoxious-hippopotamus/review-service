@@ -28,6 +28,6 @@ describe('Sidebar Component', () => {
     });
 
     it('props includes reviews', () => {
-        expect(app.find('RatingChart').props('reviews')).toBeTruthy()
+        expect(app.find('RatingChart').props('reviews')).toBeTruthy();
     });
 });

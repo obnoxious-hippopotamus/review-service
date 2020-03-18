@@ -23,9 +23,9 @@ export default class ReviewApp extends React.Component {
         this.sortReviews = this.sortReviews.bind(this);
     };
 
-    componentDidMount() {
+    async componentDidMount() {
         //get data from db
-        dbGet(this.state.movie_id)
+        await dbGet(this.state.movie_id)
             .then(reviews => {
                 this.setState({ reviews })
             })
@@ -34,7 +34,7 @@ export default class ReviewApp extends React.Component {
             });
         
         //get official movie rating
-        moviesGet(this.state.movie_id)
+        await moviesGet(this.state.movie_id)
             .then(movie => {
                 this.setState({
                     popularity: movie.vote_average / 2
