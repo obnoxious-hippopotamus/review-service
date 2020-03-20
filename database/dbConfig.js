@@ -5,8 +5,14 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'Skiclub0',
-  database: 'amazon_reviews'
+  database: 'amazon_reviews',
+  port: '3306'
 });
+
+//if being used by Docker
+if (process.env.MYSQL_DB_URI) {
+  connection = mysql.createConnection(process.env.MYSQL_DB_URI);
+}
 
 //export connection
 module.exports.connection = connection;
