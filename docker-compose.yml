@@ -13,3 +13,13 @@ services:
             MYSQL_ROOT_PASSWORD: Skiclub0
             MYSQL_DATABASE: reviews
             MYSQL_USER: root
+    
+    nginx:
+        image: nginx:latest
+        ports:
+            - "8080: 8080"
+        volumes: 
+            # - ./web/public
+        depends_on: 
+            -web
+            -database
