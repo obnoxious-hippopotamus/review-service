@@ -4,7 +4,6 @@ const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'Skiclub0',
   database: 'amazon_reviews',
   port: '3306'
 });
