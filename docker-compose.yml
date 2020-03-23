@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+    web:
+        # build: .
+        image: services-image
+        ports:
+            - "3000:3000"
+
+    database:
+        image: mysql:5.7
+        environment: 
+            MYSQL_ROOT_PASSWORD: Skiclub0
+            MYSQL_DATABASE: reviews
+            MYSQL_USER: root
+    
+    nginx:
+        image: nginx:latest
+        ports:
+            - "8080: 8080"
+        volumes: 
+            # - ./web/public
+        depends_on: 
+            -web
+            -database
