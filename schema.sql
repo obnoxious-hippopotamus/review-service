@@ -11,7 +11,7 @@ CREATE TABLE reviews (
     id INT PRIMARY KEY AUTO_INCREMENT,
     movie_id INT,
     author VARCHAR(100) DEFAULT "Anonymous",
-    content VARCHAR(500) DEFAULT "N/A",
+    content VARCHAR(5000) DEFAULT "N/A",
     image_url VARCHAR(500),
-    rating FLOAT()
+    rating DECIMAL(4,2)
 );
