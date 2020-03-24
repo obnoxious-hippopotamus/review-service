@@ -3,6 +3,7 @@ const mysql = require('mysql');
 //db connection
 const connection = mysql.createConnection({
   user: 'root',
+  password: 'Skiclub0',
   database: 'amazon_reviews',
 });
 
