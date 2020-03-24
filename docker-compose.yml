@@ -10,7 +10,7 @@ services:
     database:
         image: mysql:5.7
         environment: 
-            MYSQL_ROOT_PASSWORD: Skiclub0
+           
             MYSQL_DATABASE: reviews
             MYSQL_USER: root
     
