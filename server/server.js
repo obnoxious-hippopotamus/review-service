@@ -1,5 +1,3 @@
-const Axios = require('axios');
-const request = require('request');
 const path = require('path');
 const cors = require('cors');
 const morgan = require('morgan');
@@ -12,7 +10,7 @@ const app = express();
 require('dotenv').config();
 
 // === serve static files
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../client/public')));
 
 // === middleware
 app.use(cors());
