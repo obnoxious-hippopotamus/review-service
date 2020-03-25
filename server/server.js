@@ -12,7 +12,7 @@ const app = express();
 require('dotenv').config();
 
 // === serve static files
-app.use(express.static(path.join(__dirname, '../client/public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 // === middleware
 app.use(cors());
