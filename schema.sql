@@ -2,11 +2,6 @@ CREATE DATABASE IF NOT EXISTS amazon_reviews;
 
 USE amazon_reviews;
 
--- CREATE TABLE movies (
---     id INT PRIMARY KEY AUTO_INCREMENT,
---     movie_id INT
--- );
-
 CREATE TABLE reviews (
     id INT PRIMARY KEY AUTO_INCREMENT,
     movie_id INT,
