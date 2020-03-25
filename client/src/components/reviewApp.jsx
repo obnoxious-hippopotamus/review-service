@@ -69,7 +69,7 @@ export default class ReviewApp extends React.Component {
     render() {
 
         return(
-            <Grid container >
+            <Grid className="review-app-container" container >
                 <Grid className="sidebar" item xs={4}>
                     <Sidebar 
                         reviews={this.state.reviews}
