@@ -7,8 +7,8 @@ module.exports.getSeedData = (movie_id, author, content, img_url, rating) => {
   return new Promise((resolve, reject) => {
 
     let query = `INSERT INTO reviews (movie_id, author, content, image_url, rating)
-            VALUES(${movie_id}, "${author}", "${content}", "${img_url}", ${rating})`;
-    
+            VALUES(${movie_id}, "${author}", "${content}", "${img_url}", ${rating});`;
+
     dbConnection.query(query, (err, results, fields) => {
       if (err) {
         reject(err);

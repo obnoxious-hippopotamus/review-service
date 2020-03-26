@@ -1,13 +1,17 @@
 FROM node:latest
 
-RUN mkdir /reviews
+# ENV DB_PASS Skiclub0
 
-ADD . /reviews
+RUN mkdir -p /src/reviews
 
-WORKDIR /reviews
+WORKDIR /src/reviews
+
+COPY . /src/reviews
+
+# COPY package*.json /reviews
 
 RUN npm install
 
 EXPOSE 3000
 
-CMD ["node", "server/server.js"]
+CMD ["npm", "start"]

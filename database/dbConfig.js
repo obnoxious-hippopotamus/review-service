@@ -2,15 +2,11 @@ const mysql = require('mysql');
 
 //db connection
 const connection = mysql.createConnection({
+  host: 'database',
   user: 'root',
-  password: process.env.DB_PASS,
+  password: 'Skiclub0',
   database: 'amazon_reviews',
 });
-
-//if being used by Docker
-if (process.env.MYSQL_DB_URI) {
-  connection = mysql.createConnection(process.env.MYSQL_DB_URI);
-}
 
 //export connection
 module.exports.connection = connection;
