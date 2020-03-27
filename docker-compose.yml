@@ -2,18 +2,21 @@ version: "3"
 
 services:
     web:
-        build: .
+        build:
+            context: .
+            args: 
+                MYSQL_DATABASE: ${MYSQL_DATABASE}
+                MYSQL_USER: ${MYSQL_USERNAME}
+                MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         depends_on: 
             - "database"
         ports:
-            - "3000:3000"
-
+            - "3005:3005"
 
     database:
-        build: ./database
+        build: 
+            context: ./database
+            args: 
+                MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
         ports: 
-            - "3306:3306"
-        # environment: 
-        #     MYSQL_DATABASE: amazon_reviews
-        #     MYSQL_USER: root
-        #     MYSQL_ROOT_PASSWORD: Skiclub0
+            - "8000:8000"
