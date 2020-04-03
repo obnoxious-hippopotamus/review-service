@@ -1,7 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
 import { Grid } from '@material-ui/core/';
-import dbGet from '../api/dbGet.js';
+import dbGetMovie from '../api/dbGetMovie.js';
+import dbGetMovies from '../api/dbGetMovies.js';
 import moviesGet from '../api/moviesGet.js';
 
 //components
@@ -16,6 +17,7 @@ export default class ReviewApp extends React.Component {
 
         this.state = {
             movie_id: 284053,
+            allMovies: [],
             reviews: [],
             popularity: 0
         };
@@ -24,8 +26,17 @@ export default class ReviewApp extends React.Component {
     };
 
     componentDidMount() {
-        //get data from db
-        dbGet(this.state.movie_id)
+        //get all movies for search bar
+        dbGetMovies()
+            .then(allMovies => {
+                this.setState({ allMovies })
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        //get review data from db
+        dbGetMovie(this.state.movie_id)
             .then(reviews => {
                 this.setState({ reviews })
             })
@@ -74,6 +85,7 @@ export default class ReviewApp extends React.Component {
                     <Sidebar 
                         reviews={this.state.reviews}
                         popularity={this.state.popularity}
+                        allMovies={this.state.allMovies}
                     />
                 </Grid>
                 <Grid className="main" item xs={8}>
