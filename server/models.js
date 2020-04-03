@@ -1,13 +1,13 @@
 let dbConnection = require('../database/dbConfig.js').connection;
 
 //seed the database
-module.exports.getSeedData = (movie_id, author, content, img_url, rating) => {
+module.exports.getSeedData = (movie_id, author, content, img_url, rating, title, helped, date_added) => {
     
   // ==== INSERT EACH REVIEW INTO DB
   return new Promise((resolve, reject) => {
 
-    let query = `INSERT INTO reviews (movie_id, author, content, image_url, rating)
-            VALUES(${movie_id}, "${author}", "${content}", "${img_url}", ${rating});`;
+    let query = `INSERT INTO reviews (movie_id, author, content, image_url, rating, movie_title, helped, date_added)
+            VALUES(${movie_id}, "${author}", "${content}", "${img_url}", ${rating}, "${title}", ${helped}, "${date_added}");`;
 
     dbConnection.query(query, (err, results, fields) => {
       if (err) {
