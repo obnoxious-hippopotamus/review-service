@@ -4,12 +4,14 @@ import Divider from '@material-ui/core/Divider';
 
 import CustomerReview from './customerReview.jsx';
 import RatingChart from './ratingChart.jsx';
+import Searchbar from './searchbar.jsx';
 
 const Sidebar = props => {
     
     return (
         <div>
             <h2>Customer Reviews</h2>
+            {/* <Searchbar allMovies={props.allMovies} /> */}
             <div className="flex">
                 <Rating name="read-only" size="large" value={props.popularity} precision={0.1} readOnly  />
                 <h4 className="padding-left">{props.popularity} out of 5</h4>
