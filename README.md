@@ -16,7 +16,7 @@ Clone the repo
   git clone
 * Run npm install to get package.json dependencies
 * Create a .env file and add the following keys:<br/>
-    (Note: you must go to [The Movie DB](https://www.themoviedb.org/documentation/api "The Movie DB") to create an API key)<br/>
+    (Note: you must go to [The Movie DB](https://developers.themoviedb.org/3/getting-started/introduction "The Movie DB") to create an API key)<br/>
     MOVIE_API_KEY=key - save your API key<br/>
     MYSQL_HOST=localhost<br/>
     MYSQL_USERNAME=root<br/>
