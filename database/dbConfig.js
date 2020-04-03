@@ -1,16 +1,15 @@
 const mysql = require('mysql');
+require('dotenv').config();
+
+console.log(process.env.MYSQL_HOST);
 
 //db connection
 const connection = mysql.createConnection({
-  user: 'root',
-  password: process.env.DB_PASS,
-  database: 'amazon_reviews',
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USERNAME,
+  password: process.env.MYSQL_ROOT_PASSWORD,
+  database: process.env.MYSQL_DATABASE,
 });
-
-//if being used by Docker
-if (process.env.MYSQL_DB_URI) {
-  connection = mysql.createConnection(process.env.MYSQL_DB_URI);
-}
 
 //export connection
 module.exports.connection = connection;

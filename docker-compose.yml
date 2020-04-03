@@ -1,25 +1,22 @@
-version: "3.7"
+version: "3"
 
 services:
     web:
-        # build: .
-        image: services-image
+        build:
+            context: .
+            args: 
+                MYSQL_DATABASE: ${MYSQL_DATABASE}
+                MYSQL_USER: ${MYSQL_USERNAME}
+                MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        depends_on: 
+            - "database"
         ports:
-            - "3000:3000"
+            - "3005:3005"
 
     database:
-        image: mysql:5.7
-        environment: 
-           
-            MYSQL_DATABASE: reviews
-            MYSQL_USER: root
-    
-    nginx:
-        image: nginx:latest
-        ports:
-            - "8080: 8080"
-        volumes: 
-            # - ./web/public
-        depends_on: 
-            -web
-            -database
+        build: 
+            context: ./database
+            args: 
+                MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+        ports: 
+            - "8000:8000"

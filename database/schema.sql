@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS amazon_reviews;
+
 CREATE DATABASE IF NOT EXISTS amazon_reviews;
 
 USE amazon_reviews;

@@ -1,13 +1,22 @@
 FROM node:latest
 
-RUN mkdir /reviews
+ARG MYSQL_DATABASE
+ARG MYSQL_USER
+ARG MYSQL_ROOT_PASSWORD
 
-ADD . /reviews
+RUN mkdir -p /src/reviews
 
-WORKDIR /reviews
+WORKDIR /src/reviews
+
+COPY . /src/reviews
 
 RUN npm install
 
-EXPOSE 3000
+EXPOSE 3005
 
-CMD ["node", "server/server.js"]
+ENV MYSQL_DATABASE="${MYSQL_DATABASE}"
+ENV MYSQL_USER="${MYSQL_USERNAME}"
+ENV MYSQL_ROOT_PASSWORD="${MYSQL_ROOT_PASSWORD}"
+ENV MYSQL_HOST="database"
+
+CMD ["npm", "start"]
