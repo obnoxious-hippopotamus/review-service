@@ -7,11 +7,7 @@
     "build:dev": "webpack -d --watch",
     "start": "node server/server.js",
     "start:dev": "nodemon server/server.js -w server -w database/dbConfig.js",
-<<<<<<< HEAD
-    "schema": "mysql -u root -p < schema.sql",
-=======
     "schema": "mysql -u root -p < database/schema.sql",
->>>>>>> f773e353b3e9b42c93024782cfac14b7d5f6fb7c
     "seed": "node seed.js",
     "test": "jest --watchAll --verbose --coverage",
     "lint": "eslint ./"
