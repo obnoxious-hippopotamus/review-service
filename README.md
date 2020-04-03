@@ -16,7 +16,7 @@ Clone the repo
   git clone
 * Run npm install to get package.json dependencies
 * Create a .env file and add the following keys:<br/>
-    (Note: you must go to (https://www.themoviedb.org/documentation/api "The Movie DB") to create an API key)<br/>
+    (Note: you must go to [The Movie DB](https://www.themoviedb.org/documentation/api "The Movie DB") to create an API key)<br/>
     MOVIE_API_KEY - save your API key<br/>
     DB_PASS - Save your local MySQL password here, or remove this from the database connection file if you do not have a password for you account<br/>
 * npm run seed to seed movie data to your database
