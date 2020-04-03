@@ -17,8 +17,12 @@ Clone the repo
 * Run npm install to get package.json dependencies
 * Create a .env file and add the following keys:<br/>
     (Note: you must go to [The Movie DB](https://www.themoviedb.org/documentation/api "The Movie DB") to create an API key)<br/>
-    MOVIE_API_KEY - save your API key<br/>
-    DB_PASS - Save your local MySQL password here, or remove this from the database connection file if you do not have a password for you account<br/>
+    MOVIE_API_KEY=key - save your API key<br/>
+    MYSQL_HOST=localhost
+    MYSQL_USERNAME=root
+    MYSQL_ROOT_PASSWORD={your password here, if you have one}<br/>
+    MYSQL_DATABASE=amazon_reviews
+
 * npm run seed to seed movie data to your database
 * npm run build:dev to start the webpack server for React
 * npm run start:dev to start the server and be ready to use or test the application
