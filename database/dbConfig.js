@@ -5,7 +5,7 @@ console.log(process.env.MYSQL_HOST);
 
 //db connection
 const connection = mysql.createConnection({
-  host: process.env.MYSQL_HOST,
+  // host: process.env.MYSQL_HOST, // for use with Docker
   user: process.env.MYSQL_USERNAME,
   password: process.env.MYSQL_ROOT_PASSWORD,
   database: process.env.MYSQL_DATABASE,
