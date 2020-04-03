@@ -1,6 +1,6 @@
 const Axios = require('axios');
 require('dotenv').config();
-const db = require('./database/models.js');
+const db = require('./server/models.js');
 var faker = require('faker');
 
 //save all movie ids from initial api call
