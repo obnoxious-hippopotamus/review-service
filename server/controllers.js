@@ -6,7 +6,6 @@ module.exports = {
     get: {
         // all reviews
         getAllReviews: (req, res) => {
-            console.log('made it to controller')
             db.getAllTableData()
                 .then(response => {
                     res.status(200).json(response);
