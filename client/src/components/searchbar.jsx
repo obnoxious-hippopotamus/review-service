@@ -1,30 +1,32 @@
 import React from 'react';
 
 const Searchbar = props => {
-    if (props.allMovies.length > 0) {
-        let topMovies = props.allMovies.slice(0,100)
+    
+    let currentMovie = '';
+    
+    //find the current movie
+    for (let i = 0; i < props.allMovies.length; i++) {
+        if (props.allMovies[i].movie_id === props.currentMovieId) {
+            currentMovie = props.allMovies[i].movie_title;
+        }
+    }
         
-        return (
-            <div className="searchbar">
-                <select className="selector">
-                    {/* <option selected className="searchItem">Ragnarok</option> */}
+    return (
+        <div className="searchbar">
+                <p>Select a Movie</p>
+                {props.allMovies.length > 0 &&
+                <select className="selector" onChange={props.selectNewMovie}>
+                    <option defaultValue className="searchItem">{currentMovie}</option>
                     {props.allMovies.map(movie => {
                         return (
-                            <option key={movie.movie.id} >{movie.movie_id}</option>
+                            <option key={movie.id} >{movie.movie_title}</option>
                         )
                     })}
                 </select>
-            </div>
-        )
-    } else {
-        return (
-            <div className="searchbar">
-                <select className="selector">
-                    
-                </select>
-            </div>
-        )
-    }
+                }
+        </div>
+    )
+    
 };
 
 export default Searchbar;
