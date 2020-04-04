@@ -5,8 +5,9 @@ require('dotenv').config();
 const connection = mysql.createConnection({
   host: process.env.MYSQL_HOST, // for use with Docker
   user: process.env.MYSQL_USERNAME,
-  password: process.env.MYSQL_ROOT_PASSWORD,
+  password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DATABASE,
+  port: process.env.MYSQL_PORT
 });
 
 //export connection
