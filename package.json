@@ -8,6 +8,7 @@
     "start": "node server/server.js",
     "start:dev": "nodemon server/server.js -w server -w database/dbConfig.js",
     "build": "webpack --mode production --config ./webpack.config.js",
+    "heroku-postbuild": "npm install && npm run build",
     "schema": "mysql -u root -p < database/schema.sql",
     "seed": "node seed.js",
     "test": "jest --watchAll --verbose --coverage",
