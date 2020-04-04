@@ -13,9 +13,8 @@ export default class ReviewItem extends React.Component {
         this.toggleHelped = this.toggleHelped.bind(this);
     };
 
+    //toggle state to handle the 'helpful' button click
     toggleHelped() {
-        // e.preventDefault();
-
         this.setState({
             helped: !this.state.helped
         });
@@ -23,24 +22,6 @@ export default class ReviewItem extends React.Component {
 
     
     render() {
-
-        //generate random date for each review
-        function randomDate(start, end) {
-            return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-        };
-        
-        let generateDate = randomDate(new Date(2012, 0, 1), new Date());
-
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var monthName = months[generateDate.getMonth()];
-        var day = generateDate.getDay() + 1;
-        var year = generateDate.getFullYear();
-
-        let date = `${monthName} ${day}, ${year}`;
-
-        //generate random number for helped area
-        let num = Math.floor((Math.random() * 5) * 100);
-
 
         return (
             <div className="reviewItem">
@@ -52,7 +33,7 @@ export default class ReviewItem extends React.Component {
                     <Rating name="read-only" size="small" precision={0.1} value={this.props.review.rating} readOnly />
                 </div>
                 <div>
-                    <p className="small-grey rm-margin">Reviewed in the United States on {date.toString()}</p>
+                    <p className="small-grey rm-margin">Reviewed in the United States on {this.props.review.date_added}</p>
                 </div>
                 <div>
                     <p className="small-grey rm-margin">Format: Prime Video | <span className="verified">Verified Purchase</span></p>
@@ -61,7 +42,7 @@ export default class ReviewItem extends React.Component {
                     <p>{this.props.review.content}</p>
                 </div>
                 <div>
-                    <p className="small-grey rm-margin">{num} people found this helpful</p>
+                    <p className="small-grey rm-margin">{this.props.review.helped} people found this helpful</p>
                 </div>
                 <div className="flex rm-margin">
                     {this.state.helped === false &&
