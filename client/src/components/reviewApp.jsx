@@ -23,10 +23,13 @@ export default class ReviewApp extends React.Component {
         };
 
         this.sortReviews = this.sortReviews.bind(this);
+        this.selectNewMovie = this.selectNewMovie.bind(this);
+        this.getAllMovies = this.getAllMovies.bind(this);
+        this.getCurrentMovie = this.getCurrentMovie.bind(this);
+        this.getMovieRating = this.getMovieRating.bind(this);
     };
 
-    componentDidMount() {
-        //get all movies for search bar
+    getAllMovies() {
         dbGetMovies()
             .then(allMovies => {
                 this.setState({ allMovies })
@@ -34,17 +37,19 @@ export default class ReviewApp extends React.Component {
             .catch(err => {
                 console.log(err);
             });
+    }
 
-        //get review data from db
+    getCurrentMovie() {
         dbGetMovie(this.state.movie_id)
             .then(reviews => {
-                this.setState({ reviews })
+                this.setState({ reviews }, () => console.log(this.state.reviews))
             })
             .catch(err => {
                 console.log(err);
             });
-        
-        //get official movie rating
+    }
+
+    getMovieRating() {
         moviesGet(this.state.movie_id)
             .then(movie => {
                 this.setState({
@@ -54,6 +59,17 @@ export default class ReviewApp extends React.Component {
             .catch(err => {
                 console.log(err);
             });
+    }
+
+    componentDidMount() {
+        //get all movies for search bar
+        this.getAllMovies();
+
+        //get review data from db
+        this.getCurrentMovie();
+        
+        //get official movie rating
+        this.getMovieRating();
     };
 
     sortReviews() {
@@ -76,6 +92,18 @@ export default class ReviewApp extends React.Component {
             });
     };
 
+    //change
+    selectNewMovie(e) {
+        console.log(e.target.value)
+        for (let i = 0; i < this.state.allMovies.length; i++) {
+            if (this.state.allMovies[i].movie_title === e.target.value) {
+                this.setState({
+                    movie_id: this.state.allMovies[i].movie_id
+                }, () => {this.getCurrentMovie(); this.getMovieRating()})
+            }
+        }
+    }
+
 
     render() {
 
@@ -86,6 +114,8 @@ export default class ReviewApp extends React.Component {
                         reviews={this.state.reviews}
                         popularity={this.state.popularity}
                         allMovies={this.state.allMovies}
+                        currentMovieId={this.state.movie_id}
+                        selectNewMovie={this.selectNewMovie}
                     />
                 </Grid>
                 <Grid className="main" item xs={8}>
