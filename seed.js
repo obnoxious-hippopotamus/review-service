@@ -13,7 +13,7 @@ const getMoviesAndReviews = async () => {
     let page = 1;
 
     //while loop to get 5 pages of data
-    while (page <= 2) {
+    while (page <= 10) {
         
         //async/await function to GET
         const response = await Axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_API_KEY}&language=en-US&sort_by=popularity.desc&include_video=false&page=${page}`)
