@@ -37,8 +37,7 @@ module.exports.truncate = () => {
 
 //used to get all data from table
 module.exports.getAllTableData = () => {
-  let query = 'SELECT * FROM reviews';
-  console.log('made it into model', query)
+  let query = 'SELECT * FROM reviews ORDER BY movie_title ASC';
   return new Promise((resolve, reject) => {
     dbConnection.query(query, (err, results, fields) => {
       if (err) {
@@ -53,7 +52,6 @@ module.exports.getAllTableData = () => {
 //get specific movie id
 module.exports.getDataById = (id) => {
   let query = `SELECT * FROM reviews WHERE movie_id = ${id}`;
-
   return new Promise((resolve, reject) => {
     dbConnection.query(query, (err, results, fields) => {
       if (err) {
