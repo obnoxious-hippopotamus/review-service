@@ -13,10 +13,10 @@ const connection = mysql.createPool({
 //export connection
 module.exports.connection = connection;
 
-module.exports.connection.connect(err => {
-  if (err) {
-    console.error('db error connecting: ' + err.stack);
-  } else {
-    console.log('database connected');
-  }
-});
+// module.exports.connection.connect(err => {
+//   if (err) {
+//     console.error('db error connecting: ' + err.stack);
+//   } else {
+//     console.log('database connected');
+//   }
+// });
