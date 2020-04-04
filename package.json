@@ -7,7 +7,8 @@
     "build:dev": "webpack -d --watch",
     "start": "node server/server.js",
     "start:dev": "nodemon server/server.js -w server -w database/dbConfig.js",
-    "build": "webpack --mode production --config ./webpack.config.js && node server/server.js",
+    "build": "webpack --mode production --config ./webpack.config.js",
+    "heroku-postbuild": "node server/server.js",
     "schema": "mysql -u root -p < database/schema.sql",
     "seed": "node seed.js",
     "test": "jest --watchAll --verbose --coverage",
@@ -21,6 +22,10 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/obnoxious-hippopotamus/review-service/issues"
+  },
+  "engines": {
+    "node": "12.16.0",
+    "npm": "6.13.2"
   },
   "dependencies": {
     "@babel/core": "^7.8.7",
@@ -36,6 +41,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "faker": "^4.1.0",
+    "heroku": "^7.39.2",
     "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.9.1",
     "mysql": "^2.18.1",
