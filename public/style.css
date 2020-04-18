@@ -42,11 +42,13 @@ h2, h3 {
 
 .sidebar {
     padding: 0px 40px;
+    width: 25%;
 }
 
 .main {
     padding-left: 15px; 
     padding-right: 100px;
+    width: 75%;
 }
 
 .reviewItem {
@@ -110,3 +112,20 @@ h2, h3 {
     font-size: 12px;
 }
 
+@media screen and (max-width: 500px) {
+    .review-app-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .sidebar, .main {
+        width: 100%;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+
+    .chartArea {
+        max-width: 90%;
+    }
+}

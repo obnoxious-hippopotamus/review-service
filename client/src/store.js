@@ -19,5 +19,4 @@ const StateProvider = ( { children } ) => {
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
-b
 export { store, StateProvider }

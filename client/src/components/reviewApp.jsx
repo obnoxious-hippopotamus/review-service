@@ -109,7 +109,7 @@ export default class ReviewApp extends React.Component {
 
         return(
             <Grid className="review-app-container" container >
-                <Grid className="sidebar" item xs={4}>
+                <Grid className="sidebar" item >
                     <Sidebar 
                         reviews={this.state.reviews}
                         popularity={this.state.popularity}
@@ -118,7 +118,7 @@ export default class ReviewApp extends React.Component {
                         selectNewMovie={this.selectNewMovie}
                     />
                 </Grid>
-                <Grid className="main" item xs={8}>
+                <Grid className="main" item >
                     <Tags />
                     <Sort sortReviews={this.sortReviews} />
                     <ReviewList reviews={this.state.reviews} />
