@@ -6,6 +6,9 @@ A full stack movie reviews service built in a service-oriented architecture<br/>
 ·  Built using a feature branch workflow and code reviews with team members<br/>
 ·  Containerized the service and database with Docker<br/>
 
+### Link:
+https://amazon-review-service.herokuapp.com/
+
 
 ## Related Projects
 - https://github.com/obnoxious-hippopotamus/similar-service
